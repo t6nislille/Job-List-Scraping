@@ -5,15 +5,18 @@ url = "https://www.cvkeskus.ee/toopakkumised?op=search&search%5Bjob_salary%5D=3&
 html_text = requests.get(url).text
 soup = BeautifulSoup(html_text, 'lxml')
 jobs = soup.find_all('article', attrs={'data-component':'jobad'})
-# Find company names and job description
-for job in jobs:
-    company_name = job.find('span', class_= 'job-company mr-5').text.replace(' ', '')
-    #jobadUrl = job.find('a', class_= 'jobad-url').text.replace(' ', '')
-    jobDescription = job.find('h2', class_='xl:text-xl').text.replace(' ', '')
 
+for job in jobs:
+    # Find the company name
+    company_name = job.find('span', class_= 'job-company mr-5').text.replace(' ', '')
+    # Find job description
+    job_title = job.find('h2', class_='xl:text-xl').text.replace(' ', '')
+    # Find link to job listing
+    relative_job_url = job.find('a', class_= 'jobad-url')['href']
+    complete_job_url = "https://www.cvkeskus.ee/" + relative_job_url
+       
     print(f'''
     Company Name: {company_name}
-    Job description: {jobDescription}
+    Job Title: {job_title}
+    Job link: {complete_job_url}
     ''')
-
-
