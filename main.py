@@ -16,7 +16,7 @@ def find_jobs():
     soup = BeautifulSoup(html_text, 'lxml')
     jobs = soup.find_all('article', attrs={'data-component':'jobad'})
 
-    save.jobs(jobs)
+    save_jobs(jobs)
 
 def save_jobs(jobs):
     current_time = datetime.now().strftime("%Y%m%d%H%M%S")
@@ -34,3 +34,7 @@ def save_jobs(jobs):
 
         print(f'File saved: {file_name}')
 
+if __name__ == '__main__':
+    while True:
+        find_jobs()
+        time.sleep(86400)
