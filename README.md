@@ -1,6 +1,6 @@
-# Job-List-Scraping
+# Job List Scraping
 
-Web Scraper for CVKeskus.ee Job Listings
+This app is designed to get job listings from CVkeskus.ee and store them in a .txt file.
 
 ## Installation
 
@@ -9,3 +9,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install require
 pip install -r requirements.txt
 ```
 
+***
+## Authors
+-Tõnis Lille
+***
